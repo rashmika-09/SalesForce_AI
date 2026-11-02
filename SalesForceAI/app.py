@@ -40,11 +40,11 @@ def analyse(raw):
         return 0 if x<70 else 2000 if x<85 else 4000 if x<100 else 6000 if x<110 else 8000
     d["Illustrative_Incentive"]=d.Performance_Score.apply(bonus)
     def advice(r):
-        if r.Quota_Achievement_%<80: return "Review target, territory potential, product availability and account-level opportunities."
-        if r.Strike_Rate_%<40: return "Coach prospect selection, call planning and conversion of conversations into orders."
-        if r.Outlet_Coverage_%<80: return "Improve route planning and visit high-potential outlets consistently."
-        if r.Territory_Profit<0: return "Review costs, discounting and territory expenses."
-        if r.Performance_Score>=100: return "Recognise performance; coach to sustain profitable growth and repeat business."
+        if r["Quota_Achievement_%"] < 80: return "Review target, territory potential, product availability and account-level opportunities."
+        if r["Strike_Rate_%"] <40: return "Coach prospect selection, call planning and conversion of conversations into orders."
+        if r["Outlet_Coverage_%"] <80: return "Improve route planning and visit high-potential outlets consistently."
+        if r["Territory_Profit"]<0: return "Review costs, discounting and territory expenses."
+        if r ["Performance_Score"] >=100: return "Recognise performance; coach to sustain profitable growth and repeat business."
         return "Agree on one improvement area and review progress weekly."
     d["Coaching_Recommendation"]=d.apply(advice,axis=1)
     return d
